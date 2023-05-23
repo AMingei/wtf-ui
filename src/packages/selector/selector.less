@@ -1,0 +1,108 @@
+@layer wtf-ui {
+	.wtf-selector {
+		box-sizing: border-box;
+		position: relative;
+		display: flex;
+		width: 100%;
+		min-width: 0;
+		border: 1px solid @color[border];
+		border-radius: .2em;
+		background-color: @color[background];
+		font: inherit;
+		transition: border .4s, outline .4s;
+		.wtf-selector--resize(@padding-top-bottom) {
+			& > .wtf-selector-input,
+			& > .wtf-selector-content {
+				padding: @padding-top-bottom 2.25em @padding-top-bottom .5em;
+			}
+			&.wtf-selector--is-multiple > .wtf-selector-content {
+				min-height: calc(@padding-top-bottom * 2 + 1.6em);
+				padding: @padding-top-bottom 2.25em calc(@padding-top-bottom + .1em - 2px) .5em;
+			}
+		}
+		.wtf-selector--resize(.15em);
+		&.wtf-selector--smallest { .wtf-selector--resize(0) }
+		&.wtf-selector--smaller { .wtf-selector--resize(.05em) }
+		&.wtf-selector--larger { .wtf-selector--resize(.25em) }
+		&.wtf-selector--largest { .wtf-selector--resize(.35em) }
+		&.wtf-selector--is-focused {
+			border: 1px solid @color[border-active];
+			outline: 2px solid @color[outline];
+		}
+		&:not(.wtf-selector--is-disabled):hover {
+			border: 1px solid @color[border-active];
+			& > .wtf-selector-mark > svg { opacity: 1 }
+		}
+		&.wtf-selector--is-disabled {
+			&::after {
+				content: '';
+				position: absolute;
+				inset: 0;
+				border-radius: inherit;
+				background-color: @color[background-mask];
+				cursor: not-allowed;
+			}
+			& > * { filter: contrast(0) }
+		}
+		&.wtf-selector--is-readonly {
+			&,
+			& > .wtf-selector-content,
+			& > .wtf-selector-mark { cursor: default }
+		}
+		&.wtf-selector--is-multiple > .wtf-selector-content {
+			display: flex;
+			flex-wrap: wrap;
+			gap: .15em .5em;
+			& > * {
+				flex: none;
+			} 
+		}
+		& > .wtf-selector-input {
+			box-sizing: border-box;
+			appearance: none;
+			outline: none;
+			width: 100%;
+			border: none;
+			border-radius: inherit;
+			background-color: transparent;
+			font: inherit;
+			transition: box-shadow .4s;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			&:focus-visible { box-shadow: inset 0 0 .2em 0 @color[shadow] }
+		}
+		& > .wtf-selector-content {
+			box-sizing: border-box;
+			width: 100%;
+			border-radius: inherit;
+			outline: none;
+			font: inherit;
+			transition: box-shadow .4s;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			cursor: pointer;
+			&:focus { box-shadow: inset 0 0 .2em 0 @color[shadow] }
+		}
+		& > .wtf-selector-mark {
+			.svg-button();
+			box-sizing: border-box;
+			position: absolute;
+			inset: 0 .25em 0 auto;
+			display: flex;
+			align-items: center;
+		}
+	}
+	.wtf-selector-popper-content {
+		box-sizing: border-box;
+		box-shadow: 0 0 .5em 0 @color[shadow];
+		max-height: 20em;
+		overflow-y: auto;
+		position: relative;
+		padding: .25em;
+		border-radius: .25em;
+		background-color: @color[background];
+		opacity: 1;
+	}
+}

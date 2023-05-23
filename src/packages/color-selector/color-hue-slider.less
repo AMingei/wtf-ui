@@ -1,0 +1,33 @@
+@layer wtf-ui {
+	.wtf-hue-slider {
+		box-sizing: border-box;
+		display: flex;
+		justify-content: center;
+		height: 180px;
+		transform: scaleY(-100%);
+		user-select: none;
+		& > .wtf-slider-track {
+			box-sizing: border-box;
+			position: relative;
+			width: .8em;
+			height: 100%;
+			border-radius: .2em;
+			background-image: linear-gradient(#F00, #FF0, #0F0, #0FF, #00F, #F0F, #F00);
+			cursor: pointer;
+		}
+		& > .wtf-slider-button {
+			box-sizing: border-box;
+			box-shadow: 0 0 .25em .1em @color[shadow];
+			position: absolute;
+			width: 1em;
+			height: .75em;
+			border: 2px solid @color[background];
+			border-radius: .2em;
+			transition: border .4s, outline .4s;
+			cursor: pointer;
+			&:focus {
+				outline: 2px solid @color[outline];
+			}
+		}
+	}
+}

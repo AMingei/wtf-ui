@@ -1,0 +1,19 @@
+@layer wtf-ui {
+	.wtf-tooltip-content {
+		box-sizing: border-box;
+		box-shadow: 0 0 .5em 0 @color[tooltip-shadow];
+		padding: .25em .75em;
+		border: 1px solid @color[tooltip-font];
+		border-radius: .25em;
+		color: @color[tooltip-font];
+		background-color: @color[tooltip-background];
+		opacity: 1;
+		&--directive {
+			opacity: 0;
+			transition: opacity .4s;
+			&-active {
+				opacity: 1;
+			}
+		}
+	}
+}

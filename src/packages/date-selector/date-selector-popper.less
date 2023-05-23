@@ -1,0 +1,168 @@
+@layer wtf-ui {
+	.wtf-date-selector-popper {
+		box-sizing: border-box;
+		box-shadow: 0 0 .5em 0 @color[shadow];
+		max-height: 40em;
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		gap: .5em;
+		width: calc(.75em * 2 + .25em * 6 + 2.25em * 7);
+		height: calc(.5em * 2 + .25em * 5 + 2.25em * 6 + .5em * 3 + 3.2em);
+		padding: .5em .75em;
+		border-radius: .25em;
+		background-color: @color[background];
+		& > .wtf-date-row-1 {
+			box-sizing: border-box;
+			display: flex;
+			gap: .25em;
+			justify-content: center;
+			align-items: center;
+			& > .wtf-date-controller {
+				box-sizing: border-box;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				padding: .2em;
+				border-radius: .25em;
+				transition: background-color .4s, opacity .4s;
+				cursor: pointer;
+				&:hover {
+					background-color: @color[background-active];
+				}
+				&.wtf-date-controller--is-invisible {
+					opacity: 0;
+					animation: wtfDateControllerToggle .4s forwards;
+					@keyframes wtfDateControllerToggle {
+						from {} to { visibility: hidden }
+					}
+				}
+			}
+			& > .wtf-date-screen {
+				box-sizing: border-box;
+				flex: auto;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				padding: .2em;
+				line-height: 1.25;
+				border-radius: .25em;
+				transition: background-color .4s;
+				user-select: none;
+				&.wtf-date-screen--is-editable {
+					cursor: pointer;
+					&:hover { background-color: @color[background-active] }
+				}
+			}
+		}
+		& > .wtf-date-row-2 {
+			box-sizing: border-box;
+			display: flex;
+			flex-direction: column;
+			gap: .25em;
+			& > .wtf-date-row-2-1 {
+				box-sizing: border-box;
+				display: grid;
+				grid-template-columns: repeat(3, 1fr);
+				gap: .25em;
+				& > .wtf-date-block {
+					box-sizing: border-box;
+					position: relative;
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					aspect-ratio: 2;
+					border-radius: .25em;
+					color: @color[text];
+					transition: background-color .4s;
+					cursor: pointer;
+					user-select: none;
+					&:hover {
+						background-color: @color[background-active];
+					}
+					&.wtf-date-block--is-active {
+						font-weight: bold;
+						background-color: @color[background-active];
+					}
+					&.wtf-date-block--is-limited {
+						color: @color[text-disabled];
+						cursor: not-allowed;
+					}
+				}
+			}
+		}
+		& > .wtf-date-row-3 {
+			box-sizing: border-box;
+			display: flex;
+			flex-direction: column;
+			gap: .5em;
+			& > .wtf-date-row-3-1 {
+				box-sizing: border-box;
+				display: grid;
+				grid-template-columns: repeat(7, 1fr);
+				justify-items: center;
+				gap: .25em;
+				user-select: none;
+			}
+			& > .wtf-date-row-3-2 {
+				box-sizing: border-box;
+				display: grid;
+				grid-template: repeat(6, 1fr) / repeat(7, 1fr);
+				gap: .25em;
+				& > .wtf-date-block {
+					box-sizing: border-box;
+					position: relative;
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					aspect-ratio: 1;
+					border-radius: .25em;
+					color: @color[text];
+					transition: background-color .4s;
+					cursor: pointer;
+					user-select: none;
+					&:hover {
+						background-color: @color[background-active];
+					}
+					&.wtf-date-block--is-active {
+						font-weight: bold;
+						background-color: @color[background-active];
+					}
+					&.wtf-date-block--is-disabled {
+						color: @color[text-disabled];
+						cursor: default;
+					}
+					&.wtf-date-block--is-limited {
+						color: @color[text-disabled];
+						cursor: not-allowed;
+					}
+				}
+				& > .wtf-date-turn-now {
+					box-sizing: border-box;
+					position: relative;
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					aspect-ratio: 1;
+					border-radius: .25em;
+					color: @color[background];
+					background-color: @color[primary];
+					transition: background-color .4s;
+					cursor: pointer;
+					user-select: none;
+					&:not(.wtf-date-turn-now--is-disabled):hover {
+						background-color: @color[primary-active];
+					}
+					&.wtf-date-turn-now--is-disabled {
+						background-color: @color[primary-active];
+						cursor: not-allowed;
+					}
+				}
+			}
+		}
+	}
+	.wtf-date-selector-enter-active { transition: opacity .4s .4s }
+	.wtf-date-selector-leave-active { transition: opacity .4s }
+	.wtf-date-selector-enter-from,
+	.wtf-date-selector-leave-to { opacity: 0 }
+}

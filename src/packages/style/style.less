@@ -1,0 +1,81 @@
+@color: #theme.colors();
+
+#theme {
+	.colors() {
+		primary-temp: #8516b1;
+		success-temp: #10b131;
+		warning-temp: #91b110;
+		error-temp: #b11041;
+
+		primary-temp: #a556c7;
+		success-temp: #40c15a;
+		warning-temp: #a7c140;
+		error-temp: #c14067;
+
+		// primary: var(--color-primary);
+		// success: var(--color-success);
+		// warning: var(--color-warning);
+		// error: var(--color-error);
+
+		normal: var(--color-normal);
+		normal-active: var(--color-normal-active);
+		normal-border: var(--color-normal-border);
+		normal-border-active: var(--color-normal-border-active);
+		normal-background: var(--color-normal-background);
+
+		primary: var(--color-primary);
+		primary-active: var(--color-primary-active);
+		primary-border: var(--color-primary-border);
+		primary-border-active: var(--color-primary-border-active);
+		primary-background: var(--color-primary-background);
+
+		success: var(--color-success);
+		success-active: var(--color-success-active);
+		success-border: var(--color-success-border);
+		success-border-active: var(--color-success-border-active);
+		success-background: var(--color-success-background);
+
+		warning: var(--color-warning);
+		warning-active: var(--color-warning-active);
+		warning-border: var(--color-warning-border);
+		warning-border-active: var(--color-warning-border-active);
+		warning-background: var(--color-warning-background);
+
+		error: var(--color-error);
+		error-active: var(--color-error-active);
+		error-border: var(--color-error-border);
+		error-border-active: var(--color-error-border-active);
+		error-background: var(--color-error-background);
+
+		waiting: var(--color-waiting);
+		text: var(--color-text);
+		text-disabled: var(--color-text-disabled);
+		background: var(--color-background);
+		background-active: var(--color-background-active);
+		background-mask: var(--color-mask);
+		border: var(--color-border);
+		border-active: var(--color-border-active);
+		outline: var(--color-outline);
+		shadow: var(--color-shadow);
+		svg-button: var(--color-svg-button);
+		switch-off: var(--color-switch-off);
+		switch-on: var(--color-switch-on);
+		radio-box: var(--color-radio-box);
+		radio-dot: var(--color-radio-dot);
+		checkbox-box: var(--color-radio-box);
+		checkbox-dot: var(--color-radio-dot);
+		tooltip-font: var(--color-tooltip-font);
+		tooltip-background: var(--color-tooltip-background);
+		tooltip-shadow: var(--color-tooltip-shadow);
+	}
+}
+
+.svg-button() {
+	color: @color[svg-button];
+	& > svg {
+		opacity: .25;
+		transition: opacity .4s;
+		cursor: pointer;
+		&:hover { opacity: 1 }
+	}
+}

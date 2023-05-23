@@ -1,0 +1,38 @@
+@layer wtf-ui {
+	.wtf-color-pallete {
+		box-sizing: border-box;
+		position: relative;
+		width: 180px;
+		height: 180px;
+		border-radius: .2em;
+		transform: scaleY(-100%);
+		user-select: none;
+		cursor: pointer;
+		& > .wtf-color-track {
+			position: absolute;
+			inset: 0;
+			border-radius: inherit;
+			&::after {
+				content: '';
+				position: absolute;
+				inset: 0;
+				border-radius: inherit;
+				background-image: linear-gradient(to top,transparent, black);
+			}
+		}
+		& > .wtf-color-picker {
+			box-sizing: border-box;
+			box-shadow: 0 0 .25em .1em @color[shadow];
+			position: absolute;
+			width: 1em;
+			height: 1em;
+			border: 2px solid @color[background];
+			border-radius: .2em;
+			transition: border .4s, outline .4s;
+			cursor: pointer;
+			&:focus {
+				outline: 2px solid @color[outline];
+			}
+		}
+	}
+}

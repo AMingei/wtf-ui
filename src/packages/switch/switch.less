@@ -1,0 +1,98 @@
+@layer wtf-ui {
+	.wtf-switch {
+		box-sizing: border-box;
+		position: relative;
+		display: inline-block;
+		vertical-align: middle;
+		width: fit-content;
+		& > .wtf-switch-input {
+			position: absolute;
+			// visibility: hidden;
+			// 为了能够通过 label 聚焦
+			appearance: none;
+			width: 0;
+			height: 0;
+			border: none;
+		}
+		& > .wtf-switch-box {
+			box-sizing: border-box;
+			position: relative;
+			height: 1.4em;
+			min-width: 3.2em;
+			padding: .15em;
+			border: 1px solid @color[border];
+			border-radius: calc(.5 * $height);
+			transition: background-color .4s, border .4s, outline .4s;
+			overflow: hidden;
+			cursor: pointer;
+			& > .wtf-switch-bar {
+				box-sizing: border-box;
+				position: absolute;
+				height: calc(100% - 2 * $padding);
+				aspect-ratio: 1;
+				transition: left .4s cubic-bezier(.25, .46, .46, 1.01);
+				& > .wtf-switch-text--off,
+				& > .wtf-switch-text--on {
+					box-sizing: border-box;
+					position: absolute;
+					inset: -$padding auto -$padding auto;
+					display: flex;
+					align-items: center;
+					width: max-content;
+					transform: scale(.95);
+					user-select: none;
+					&:is(.wtf-switch-text--off) {
+						left: -$padding;
+						padding-right: .4em;
+						padding-left: calc(1.6em + $padding);
+					}
+					&:is(.wtf-switch-text--on) {
+						right: -$padding;
+						padding-right: calc(1.6em + $padding);
+						padding-left: .4em;
+					}
+				}
+				& > .wtf-switch-button {
+					box-sizing: border-box;
+					box-shadow: 0 0 .5em 0 @color[shadow];
+					position: absolute;
+					inset: 0;
+					border-radius: 50%;
+					background-color: @color[background];
+				}
+			}
+			&.wtf-switch-box--off {
+				background-color: @color[switch-off];
+				& > .wtf-switch-bar { left: $padding; }
+			}
+			&.wtf-switch-box--on {
+				background-color: @color[switch-on];
+				& > .wtf-switch-bar { left: calc(100% - $height + 2 * $padding); }
+			}
+			&.wtf-switch-box--smallest { transform: scale(.85); }
+			&.wtf-switch-box--smaller { transform: scale(.95); }
+			&.wtf-switch-box--larger { transform: scale(1.05); }
+			&.wtf-switch-box--largest { transform: scale(1.15); }
+			&:not(.disabled):hover { border: 1px solid @color[border-active] }
+			&.disabled::after {
+				content: '';
+				position: absolute;
+				inset: 0;
+				border-radius: inherit;
+				background-color: @color[background-mask];
+				cursor: not-allowed;
+			}
+			&.readonly {
+				cursor: default;
+				& > .wtf-switch-bar { cursor: not-allowed }
+			}
+			&:focus-visible {
+				outline: none;
+			}
+			&.focus-visible {
+				border: 1px solid @color[border-active];
+				outline: 2px solid @color[outline];
+			}
+		}
+	}
+}

@@ -1,0 +1,81 @@
+@layer wtf-ui {
+	.wtf-slider {
+		box-sizing: border-box;
+		position: relative;
+		display: flex;
+		align-items: center;
+		margin: .75em 0;
+		width: 100%;
+		border-radius: .25em;
+		& > &-track {
+			box-sizing: border-box;
+			box-shadow: inset 0 0 .2em 0 @color[shadow];
+			position: relative;
+			width: 100%;
+			height: .5em;
+			border-radius: inherit;
+			background-color: @color[background];
+			cursor: pointer;
+			& > .wtf-slider-bar {
+				box-sizing: border-box;
+				box-shadow: inset 0 0 .2em 0 @color[shadow];
+				border-radius: inherit;
+			}
+			& > .wtf-slider-mark-container {
+				box-sizing: border-box;
+				position: absolute;
+				inset: 0;
+				display: flex;
+				align-items: center;
+			}
+		}
+		& > &-button {
+			box-sizing: border-box;
+			box-shadow: 0 0 .5em 0 @color[shadow];
+			position: absolute;
+			width: 1em;
+			height: 1em;
+			border-radius: 50%;
+			background-color: @color[background];
+			transition: border .4s, outline .4s;
+			cursor: pointer;
+			&:focus {
+				border: 1px solid @color[border-active];
+				outline: 2px solid @color[outline];
+			}
+		}
+		&.wtf-slider--vertical {
+			justify-content: center;
+			width: auto;
+			height: 100%;
+			padding: 0 .75em;
+			& > .wtf-slider-track {
+				width: .5em;
+				height: 100%;
+				& > .wtf-slider-mark-container {
+					align-items: unset;
+					justify-content: center;
+				}
+			}
+		}
+		&.wtf-slider--type-normal > .wtf-slider-track > .wtf-slider-bar { background-color: @color[normal-active] }
+		&.wtf-slider--type-primary > .wtf-slider-track > .wtf-slider-bar { background-color: @color[primary-active] }
+		&.wtf-slider--type-success > .wtf-slider-track > .wtf-slider-bar { background-color: @color[success-active] }
+		&.wtf-slider--type-warning > .wtf-slider-track > .wtf-slider-bar { background-color: @color[warning-active] }
+		&.wtf-slider--type-error > .wtf-slider-track > .wtf-slider-bar { background-color: @color[error-active] }
+		&.wtf-slider--disabled {
+			& > ::after {
+				content: '';
+				position: absolute;
+				inset: 0;
+				border-radius: inherit;
+				background-color: @color[background-mask];
+				cursor: not-allowed;
+			}
+			& > .wtf-slider-button { cursor: not-allowed }
+		}
+		&.wtf-slider--readonly,
+		&.wtf-slider--readonly > .wtf-slider-track,
+		&.wtf-slider--readonly > .wtf-slider-button { cursor: default }
+	}
+}

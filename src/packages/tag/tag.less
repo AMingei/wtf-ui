@@ -1,0 +1,87 @@
+@layer wtf-ui {
+	.wtf-tag {
+		box-sizing: border-box;
+		position: relative;
+		display: inline-flex;
+		gap: .35em;
+		align-items: center;
+		padding: .25em .75em;
+		border: 1px solid;
+		border-radius: .25em;
+		transition: border .4s, outline .4s;
+		.wtf-tag--type(@color1, @color2, @color3, @color4) {
+			border-color: @color1;
+			color: @color3;
+			background-color: @color4;
+			&.wtf-tag--border-hover,
+			&.wtf-tag--border-none { border-color: transparent }
+			&.wtf-tag--border-always:hover {border-color: @color2 }
+			&.wtf-tag--border-hover:hover { border-color: @color1 }
+			&:hover > .wtf-tag-icon > svg { opacity: 1 }
+			& > .wtf-tag-icon {
+				display: flex;
+				align-items: center;
+				height: 1em;
+				color: @color2;
+				& > svg {
+					opacity: .5;
+					transition: opacity .4s;
+				}
+			}
+			& > .wtf-tag-x {
+				display: flex;
+				align-items: center;
+				margin: 0 -.5em 0 -.35em;
+				height: 1em;
+				color: @color2;
+				& > svg {
+					opacity: .5;
+					transition: opacity .4s;
+					cursor: pointer;
+					&:hover { opacity: 1 }
+				}
+			}
+		}
+		&.wtf-tag--type-normal { .wtf-tag--type(@color[normal-border], @color[normal-border-active], @color[normal], @color[normal-background]) }
+		&.wtf-tag--type-primary { .wtf-tag--type(@color[primary-border], @color[primary-border-active], @color[primary], @color[primary-background]) }
+		&.wtf-tag--type-success { .wtf-tag--type(@color[success-border], @color[success-border-active], @color[success], @color[success-background]) }
+		&.wtf-tag--type-warning { .wtf-tag--type(@color[warning-border], @color[warning-border-active], @color[warning], @color[warning-background]) }
+		&.wtf-tag--type-error { .wtf-tag--type(@color[error-border], @color[error-border-active], @color[error], @color[error-background]) }
+		&.wtf-tag--is-round { border-radius: calc(.75em + 1px) }
+		&.wtf-tag--is-editable {
+			border-style: dashed;
+			cursor: pointer;
+		}
+		&.wtf-tag--is-editing {
+			padding: 0;
+			outline: 2px solid @color[outline];
+			background-color: @color[background];
+		}
+		& > &-label {
+			line-height: 1;
+			user-select: none;
+		}
+		& > &-input {
+			appearance: none;
+			box-sizing: border-box;
+			box-shadow: inset 0 0 .2em 0 @color[shadow];
+			border: none;
+			border-radius: inherit;
+			outline: none;
+			height: 1.5em;
+			width: 6em;
+			min-width: 6em;
+			padding: .25em .75em;
+			background-color: transparent;
+			font-size: 1em;
+			font-family: inherit;
+		}
+		& > &-input-fake {
+			visibility: hidden;
+			position: absolute;
+			padding: .25em .75em;
+			font-family: inherit;
+			white-space: pre;
+		}
+	}
+}

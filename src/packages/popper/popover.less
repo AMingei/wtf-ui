@@ -1,0 +1,30 @@
+@layer wtf-ui {
+	.wtf-popover-content {
+		box-sizing: border-box;
+		box-shadow: 0 0 .5em 0 @color[shadow];
+		position: relative;
+		padding: .6em 1.5em;
+		border-radius: .25em;
+		background-color: @color[background];
+		opacity: 1;
+		& > .wtf-popover-x-button {
+			position: absolute;
+			inset: .5em .5em auto auto;
+			color: @color[svg-button];
+			& > svg {
+				opacity: .25;
+				transition: opacity .4s;
+				cursor: pointer;
+				&:hover {
+					opacity: 1;
+				}
+			}
+		}
+		& > .wtf-popover-controller {
+			display: flex;
+			justify-content: flex-end;
+			gap: .5em;
+			padding: .5em 0 .25em 0;
+		}
+	}
+}

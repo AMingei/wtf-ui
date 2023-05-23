@@ -1,0 +1,36 @@
+@layer wtf-ui {
+	.wtf-alpha-slider {
+		box-sizing: border-box;
+		position: relative;
+		display: flex;
+		justify-content: center;
+		height: 180px;
+		background-image: linear-gradient(45deg, #DDD 25%, #0000 25%), linear-gradient(-45deg, #DDD 25%, #0000 25%), linear-gradient(45deg, #0000 75%, #DDD 75%), linear-gradient(-45deg, #0000 75%, #DDD 75%);
+		background-size: .8em .8em;
+		background-position: 0 0, 0 .4em, .4em -.4em, -.4em 0px;
+		background-repeat: repeat;
+		user-select: none;
+		& > .wtf-slider-track {
+			box-sizing: border-box;
+			position: relative;
+			width: .8em;
+			height: 100%;
+			border-radius: .2em;
+			cursor: pointer;
+		}
+		& > .wtf-slider-button {
+			box-sizing: border-box;
+			box-shadow: 0 0 .25em .1em @color[shadow];
+			position: absolute;
+			width: 1em;
+			height: .75em;
+			border: 2px solid @color[background];
+			border-radius: .2em;
+			transition: border .4s, outline .4s;
+			cursor: pointer;
+			&:focus {
+				outline: 2px solid @color[outline];
+			}
+		}
+	}
+}

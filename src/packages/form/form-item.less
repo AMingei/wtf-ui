@@ -1,0 +1,91 @@
+@layer wtf-ui {
+	.wtf-form-item {
+		box-sizing: border-box;
+		display: table-row;
+		& > .wtf-form-label {
+			box-sizing: border-box;
+			display: table-cell;
+			vertical-align: baseline;
+			user-select: none;
+		}
+		& > .wtf-form-input {
+			box-sizing: border-box;
+			position: relative;
+			display: table-cell;
+			vertical-align: baseline;
+			& > .wtf-form-message {
+				box-sizing: border-box;
+				position: absolute;
+				left: 0;
+				display: flex;
+				align-items: center;
+				// padding: .2em 0;
+				& > .wtf-form-message-text {
+					padding: 0 .5em;
+					font-size: .8em;
+				}
+				&--pass { color: @color[success] }
+				&--fail { color: @color[warning] }
+				&--judge {
+					color: @color[waiting];
+					& > .spinner {
+						width: .8em;
+						height: .8em;
+						position: relative;
+						& > .circle-container {
+							inset: 0;
+							position: absolute;
+							&:nth-of-type(2) { transform: rotateZ(45deg) }
+							& > .circle {
+								width: .3em;
+								height: .3em;
+								background-color: $color;
+								border-radius: 50%;
+								position: absolute;
+								animation: bouncedelay 1.2s infinite ease-in-out;
+								animation-fill-mode: both;
+								&:nth-of-type(1) { inset: 0 auto auto 0 }
+								&:nth-of-type(2) { inset: 0 0 auto auto }
+								&:nth-of-type(3) { inset: auto 0 0 auto }
+								&:nth-of-type(4) { inset: auto auto 0 0 }
+								@keyframes bouncedelay {
+									0%, 80%, 100% { transform: scale(0.0) }
+									40% { transform: scale(1.0) }
+								}
+							}
+							&:nth-of-type(1) > .circle {
+								&:nth-of-type(2) { animation-delay: -0.9s }
+								&:nth-of-type(3) { animation-delay: -0.6s }
+								&:nth-of-type(4) { animation-delay: -0.3s }
+							}
+							&:nth-of-type(2) > .circle {
+								&:nth-of-type(1) { animation-delay: -1.05s }
+								&:nth-of-type(2) { animation-delay: -0.75s }
+								&:nth-of-type(3) { animation-delay: -0.45s }
+								&:nth-of-type(4) { animation-delay: -0.15s }
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	.wtf-form-container--block {
+		display: flex;
+		flex-direction: column;
+		gap: 1.3em 1.5em;
+	}
+	.wtf-form-container--inline {
+		display: flex;
+		gap: 1.3em 1.5em;
+	}
+	.wtf-form-container--block,
+	.wtf-form-container--inline {
+		& > .wtf-form-item {
+			display: block;
+			flex: auto;
+			& > .wtf-form-label { display: none }
+			& > .wtf-form-input { display: block }
+		}
+	}
+}

@@ -1,0 +1,15 @@
+@layer wtf-ui {
+	.wtf-option-group {
+		&:first-of-type > .invisible { display: none }
+		& > .wtf-option-group-label {
+			padding: 0 1em;
+			& > .wtf-divider {
+				& > .wtf-divided-rule { color: @color[border] }
+				& > .wtf-divider-text {
+					color: @color[border-active];
+					font-size: .8em;
+				}
+			}
+		}
+	}
+}

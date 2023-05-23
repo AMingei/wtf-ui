@@ -1,0 +1,80 @@
+@layer wtf-ui {
+	.wtf-radio {
+		box-sizing: border-box;
+		display: inline-flex;
+		align-items: center;
+		gap: .5em;
+		& > .wtf-radio-input {
+			appearance: none;
+			box-sizing: border-box;
+			box-shadow: inset 0 0 .25em 0 @color[shadow];
+			position: relative;
+			display: inline-flex;
+			justify-content: center;
+			align-items: center;
+			margin: 0;
+			width: 1.2em;
+			aspect-ratio: 1;
+			border: 1px solid @color[border];
+			border-radius: 50%;
+			background-color: @color[radio-box];
+			transition: border .4s, outline .4s;
+			cursor: pointer;
+			&::before {
+				content: '';
+				box-sizing: border-box;
+				display: block;
+				width: .6em;
+				aspect-ratio: 1;
+				border-radius: 50%;
+				background-color: @color[radio-dot];
+				opacity: 0;
+				transform: scale(.5);
+				transition: opacity .2s, transform .2s;
+			}
+			&:checked::before {
+				opacity: 1;
+				transform: scale(1);
+			}
+			&:not(.disabled):hover {
+				border: 1px solid @color[border-active];
+			}
+			&.focus-visible {
+				border: 1px solid @color[border-active];
+				outline: 2px solid @color[outline];
+			}
+		}
+		& > .wtf-radio-label {
+			box-sizing: border-box;
+			cursor: pointer;
+			user-select: none;
+		}
+		&.disabled {
+			cursor: not-allowed;
+			& > .wtf-radio-input::after {
+				content: '';
+				position: absolute;
+				inset: 0;
+				border-radius: inherit;
+				background-color: @color[background-mask];
+				cursor: not-allowed;
+			}
+			& > .wtf-radio-label {
+				opacity: .5;
+				cursor: not-allowed;
+			}
+		}
+		&.readonly {
+			& > .wtf-radio-input::after {
+				content: '';
+				position: absolute;
+				inset: 0;
+				border-radius: inherit;
+				cursor: not-allowed;
+			}
+			& > .wtf-radio-label {
+				cursor: default;
+			}
+		}
+	}
+}

@@ -1,0 +1,45 @@
+@layer wtf-ui {
+	.wtf-option {
+		box-sizing: border-box;
+		width: 100%;
+		position: relative;
+		display: flex;
+		align-items: center;
+		padding: .5em 1em;
+		border-radius: .25em;
+		cursor: pointer;
+		user-select: none;
+		transition: background-color .4s;
+		&:not(.wtf-option--is-disabled):hover { background-color: @color[background-active] }
+		&.wtf-option--is-active { background-color: @color[background-active] }
+		&.wtf-option--is-disabled {
+			&::after {
+				content: '';
+				position: absolute;
+				inset: 0;
+				border-radius: inherit;
+				background-color: @color[background-mask];
+				opacity: .25;
+				cursor: not-allowed;
+			}
+			& > * { filter: contrast(0) }
+		}
+		& > &-label {
+			flex: auto;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+		}
+		& > &-mark {
+			flex: none;
+			height: 1em;
+			display: flex;
+			align-items: center;
+			color: @color[primary];
+		}
+	}
+	.wtf-option-mark-enter-active,
+	.wtf-option-mark-leave-active { transition: opacity 0.4s }
+	.wtf-option-mark-enter-from,
+	.wtf-option-mark-leave-to { opacity: 0 }
+}
